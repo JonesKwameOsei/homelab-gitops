@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
-  kind: Application
-  metadata:
-    name: test-app
-    namespace: argocd
-  spec:
-    project: default
-    source:
-      repoURL: https://github.com/JonesKwameOsei/homelab-gitops
-      targetRevision: HEAD
-      path: manifests/test-app
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: test-app
-    syncPolicy:
-      automated:
-        prune: true
-        selfHeal: true
-      syncOptions:
-      - CreateNamespace=true
+kind: Application
+metadata:
+  name: test-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/JonesKwameOsei/homelab-gitops
+    targetRevision: HEAD
+    path: manifests/test-app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: test-app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
